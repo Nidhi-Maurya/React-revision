@@ -1,3 +1,5 @@
+import Body from "./components/Body"
+import Header from "./components/Header"
 
 
 function App() {
@@ -5,7 +7,10 @@ function App() {
 
   return (
   <>
-  <h1>Hii Nidhi Maurya</h1>
+  <div className="space-y-3">
+<Header/>
+<Body/> 
+  </div>
   </>
   )
 }
