@@ -28,13 +28,14 @@ const fetchData= async()=>{
   setListOfRestuarent(restaurants || []);
 };
 
-if(listOfRestuarent.length===0){
-  return <Shimmar/>
-}
+// conditional rendering  
+
+// if(listOfRestuarent.length===0){
+//   return <Shimmar/>
+// }
 
 
-  
-  return (
+  return  listOfRestuarent.length===0 ? <Shimmar/> :(
     <>
       <div className="flex flex-row">
         <div>

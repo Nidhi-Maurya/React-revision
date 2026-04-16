@@ -1,6 +1,11 @@
+import { useState } from "react";
 
 
 export default  function Header (){
+  const[buttonUpdate, setButtonUpdate]=useState("Login");
+let btnName="Login";
+ 
+
   return (
     <> 
    <div className="w-full bg-gray-200 flex justify-between items-center p-2">
@@ -15,6 +20,14 @@ export default  function Header (){
         <li>Contact us</li>
         <li>learn</li>
         <li>Details</li>
+        <button className="border cursor-pointer px-4  rounded-xl"
+          onClick={()=>{
+            buttonUpdate==="Login" ?
+            setButtonUpdate("LogOut") : setButtonUpdate("Login")
+            //  console.log(buttonUpdate);
+          }}
+        
+        >{buttonUpdate}</button>
         </ul>
       </div>
     </div>
