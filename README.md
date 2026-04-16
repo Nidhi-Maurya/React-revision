@@ -14,3 +14,21 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+
+<!-- API Fetching Rules  -->
+
+
+## There is Two way to fetch api data from server 
+     1- Load---->API---->RENDER
+     2- Load----->Render--->API---->RENDER    , 
+         2nd is the best approach to fetch the api data ,
+         1st one take near about 500ms time then show the data suddenly on ui so the 1st one is better ,
+
+
+
+## useEffect  ---
+      ## Syntax :    useEffect((callback function)=>{},[dependency])
+After Component Render use Effect Hooks will call...

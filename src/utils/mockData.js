@@ -205,3 +205,6 @@ export const resList=[
   }
 
 ]
+
+
+//  now learn Real time api data fetching 
