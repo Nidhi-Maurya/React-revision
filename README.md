@@ -32,3 +32,24 @@ If you are developing a production application, we recommend using TypeScript wi
 ## useEffect  ---
       ## Syntax :    useEffect((callback function)=>{},[dependency])
 After Component Render use Effect Hooks will call...
+in useEffect we will fetch the data inside the useEffect 
+
+## Fetch API Syntax 
+
+ * const fetchData= aync()=>{
+  const data= await fetch("your api");
+  const json= await data.json();
+
+  console.log(json) *   
+   //! this to check the data in console , that data is come in from api 
+ }
+
+ ## CORS ERROR
+     -- Browser Blocked to call Data from one origin to another origin is called CORS ERROR.
+
+  ## After fetching data from api if taking time we can show  , loading,
+  But loading is not a good way practice,
+
+  So We use ,##Simhar UI 
+
+  ## Simhar UI is fake load data to show user ,till actual data will not comes from api......

@@ -1,16 +1,16 @@
 export default function RestaurentCard({ resData }) {
   const {
-    name,
-    avgRating,
-    cuisines,
-    costForTwo,
-    sla: { deliveryTime },
-    cloudinaryImageId,
-  } = resData;
+  name,
+  avgRating,
+  cuisines,
+  costForTwo,
+  cloudinaryImageId,
+  sla,
+} = resData?.info;
 
   const imageUrl =
-    "https://res.cloudinary.com/demo/image/upload/" + cloudinaryImageId;
-
+  "https://media-assets.swiggy.com/swiggy/image/upload/" +
+  cloudinaryImageId;
   return (
     <div className="flex items-center gap-4 border rounded-xl p-3 shadow-sm hover:shadow-md transition bg-red-670 w-full max-w-xl">
       
@@ -32,7 +32,7 @@ export default function RestaurentCard({ resData }) {
           <span className="bg-green-600 text-white px-2 py-1 rounded">
             ⭐ {avgRating}
           </span>
-          <span className="text-gray-600">{deliveryTime} mins</span>
+          <span className="text-gray-600">{sla?.deliveryTime} mins</span>
         </div>
 
         {/* Cuisines */}
@@ -42,7 +42,7 @@ export default function RestaurentCard({ resData }) {
 
         {/* Cost */}
         <p className="text-gray-700 font-medium mt-2">
-          ₹{costForTwo / 100} FOR TWO
+          {costForTwo} 
         </p>
       </div>
     </div>
