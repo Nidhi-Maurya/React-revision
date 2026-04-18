@@ -47,9 +47,13 @@ in useEffect we will fetch the data inside the useEffect
  ## CORS ERROR
      -- Browser Blocked to call Data from one origin to another origin is called CORS ERROR.
 
+     To Resolve cors ERROR  use cors chrome extension then it easliy pass data and remove cors error.
+
   ## After fetching data from api if taking time we can show  , loading,
   But loading is not a good way practice,
 
   So We use ,##Simhar UI 
 
   ## Simhar UI is fake load data to show user ,till actual data will not comes from api......
+
+** When ever state variable update,react triggers a reconciliation cycle (re-render the components)
