@@ -20,20 +20,24 @@ useEffect(()=>{
 
 
 const fetchData= async()=>{
-  const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.459497&lng=77.026634&page_type=DESKTOP_WEB_LISTING");
+  const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.459497&lng=77.026634&page_type=DESKTOP_WEB_LISTING");
   const json= await data.json();
 
 
 
- const restaurants =
-    json?.data?.cards
-      ?.find((card) => card?.card?.card?.gridElements)
-      ?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+
+const restaurants = json?.data?.cards
+  ?.map((c) => c?.card?.card)
+  ?.find((c) => c?.gridElements?.infoWithStyle?.restaurants)
+  ?.gridElements?.infoWithStyle?.restaurants;
+
+
 
   console.log("restaurants:", restaurants);
 
-  setListOfRestuarent(restaurants );
-  setFilteredRestuarent(restaurants);
+  setListOfRestuarent(restaurants || []);
+  setFilteredRestuarent(restaurants || []);
 };
 
 // conditional rendering  
@@ -78,7 +82,7 @@ const fetchData= async()=>{
 
               const Filteredlist = listOfRestuarent.filter((res) => res?.info?.avgRating >4);
 
-             setListOfRestuarent(FilteredList)
+             setListOfRestuarent(Filteredlist)
             }}
             className="   cursor-pointer "
           >

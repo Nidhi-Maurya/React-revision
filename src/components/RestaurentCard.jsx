@@ -44,6 +44,9 @@ export default function RestaurentCard({ resData }) {
         <p className="text-gray-700 font-medium mt-2">
           {costForTwo} 
         </p>
+         <p className="text-gray-700 font-medium mt-2">
+          {sla?.slaString} 
+        </p>
       </div>
     </div>
   );
