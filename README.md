@@ -57,3 +57,8 @@ in useEffect we will fetch the data inside the useEffect
   ## Simhar UI is fake load data to show user ,till actual data will not comes from api......
 
 ** When ever state variable update,react triggers a reconciliation cycle (re-render the components)
+
+
+<!-- ! Start to learn Route -->
+
+## Route is the the that where we can connect the one page to another page via url  move to easily.
