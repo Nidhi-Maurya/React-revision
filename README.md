@@ -27,12 +27,19 @@ If you are developing a production application, we recommend using TypeScript wi
          2nd is the best approach to fetch the api data ,
          1st one take near about 500ms time then show the data suddenly on ui so the 1st one is better ,
 
+  ## useState 
+  1-       
+
 
 
 ## useEffect  ---
       ## Syntax :    useEffect((callback function)=>{},[dependency])
 After Component Render use Effect Hooks will call...
 in useEffect we will fetch the data inside the useEffect 
+
+ ## if no dependency array => useEffect is called on every render
+## [2] -- if depedency array is empty = [] => useEffect is  called only on initial render (just once)
+## [3] if dependecy array is [btnname] => called everyTime btnName is updated
 
 ## Fetch API Syntax 
 
@@ -62,3 +69,4 @@ in useEffect we will fetch the data inside the useEffect
 <!-- ! Start to learn Route -->
 
 ## Route is the the that where we can connect the one page to another page via url  move to easily.
+

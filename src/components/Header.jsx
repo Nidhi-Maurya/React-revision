@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default  function Header (){
   const[buttonUpdate, setButtonUpdate]=useState("Login");
 let btnName="Login";
  
+
+useEffect(()=>{
+
+  console.log("useEffect is called");
+
+
+},[])
+
+
 
   return (
     <> 
