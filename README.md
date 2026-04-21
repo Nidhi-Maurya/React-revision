@@ -70,3 +70,14 @@ in useEffect we will fetch the data inside the useEffect
 
 ## Route is the the that where we can connect the one page to another page via url  move to easily.
 
+# A hook *useRouterError* is given by  react-router-dom
+ ** Using useRouterError we can see all type of error like, network failed,browser error,etc..
+
+//! ** In react if there is any routing conncetion so we dont need to use <a></a>  anchor tag , because it render the whole page not only   selected page. 
+---- Instead of <a></a> tag we have to use * <Link> </Link> tag react-router dom
+
+
+# Types of routing in web APPs,
+
+1- Client Side Routing
+2- Server Side Routing

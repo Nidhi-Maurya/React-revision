@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 export default  function Header (){
@@ -25,10 +26,19 @@ useEffect(()=>{
       </div>
       <div className="    ">
         <ul className="flex font-bold text-lg  gap-3  ">
-          <li>About Us</li>
-        <li>Contact us</li>
-        <li>learn</li>
-        <li>Details</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+          <Link to="/about">About Us</Link>
+        </li>
+        <li>
+          <Link to="/contact"> Contact Us</Link>
+        </li>
+        <li>
+          <Link to="/cart"> Cart</Link>
+        </li>
+          
         <button className="border cursor-pointer px-4  rounded-xl"
           onClick={()=>{
             buttonUpdate==="Login" ?
