@@ -81,3 +81,5 @@ in useEffect we will fetch the data inside the useEffect
 
 1- Client Side Routing
 2- Server Side Routing
+
+# Dynamic Routing --

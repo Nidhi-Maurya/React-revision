@@ -9,7 +9,7 @@ let btnName="Login";
 
 useEffect(()=>{
 
-  console.log("useEffect is called");
+  console.log("useEffect is called nooo");
 
 
 },[])

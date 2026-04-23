@@ -4,11 +4,12 @@ import Cart from "./components/Cart"
 import Contact from "./components/Contact"
 import Error from "./components/Error"
 import Header from "./components/Header"
-
+import { createBrowserRouter ,Outlet,RouterProvider} from "react-router-dom"
+import RestroMenu from "./components/Restuarent/RestroMenu"
 
 // https://www.swiggy.com/mapi/misc_new/skeleton?lat=28.4349272&lng=77.0392319  scalaton api for shimmar ui 
 
-import { createBrowserRouter ,Outlet,RouterProvider} from "react-router-dom"
+
 function App() {
   return (
     <div className="space-y-3">
@@ -41,6 +42,10 @@ const appRouter = createBrowserRouter([
   {
     path:'/cart',
     element: <Cart/>
+  },
+  {
+    path: "/restaurants/:resId",
+    element: <RestroMenu/>
   }
 ],
     errorElement: <Error/>
