@@ -83,3 +83,29 @@ in useEffect we will fetch the data inside the useEffect
 2- Server Side Routing
 
 # Dynamic Routing --
+
+
+# class based components
+  
+
+## Sntax of classBased Component : 
+  # import React from "react";
+   class UserClass extends React.Components {
+
+  <!--  use constructure to pass props -->
+
+  constructure(props){
+    super(props);
+    
+  }
+
+
+    render (){
+      return  <> 
+      <h1> </h1>
+      <h2> </h2>
+      </>
+    }
+   }
+
+   export default UserClass;  
