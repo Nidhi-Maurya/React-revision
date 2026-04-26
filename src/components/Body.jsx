@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import RestaurentCard from "./RestaurentCard";
 import Shimmar from "./Shimmar";
+import { Link } from "react-router-dom";
 
 export default function Body() {
   // hooks state
@@ -18,7 +19,7 @@ export default function Body() {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.459497&lng=77.026634&page_type=DESKTOP_WEB_LISTING",
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.4420427&lng=77.02065379999999&carousel=true&third_party_vendor=1",
     );
     const json = await data.json();
 
@@ -96,7 +97,7 @@ export default function Body() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredRestuarent.map((res, id) => (
-          <RestaurentCard key={res.info.id} resData={res} />
+         <Link  key={res.info.id} to={`/restaurants/${res.info.id}`}>  <RestaurentCard resData={res} /></Link>
         ))}
       </div>
     </>
