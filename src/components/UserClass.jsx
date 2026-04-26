@@ -8,7 +8,7 @@ class UserClass extends React.Component{
       super(props);
        this.state={
         count:0, 
-        count2:5,
+        
     }
 
   };
@@ -18,11 +18,20 @@ const {name, location,contact,email}= this.props;
 const {count,count2}=this.state
 
 
-    return (
+    return (  
       <>
       <div className="p-10 border m-5">
         <h1>Count: {count}</h1>
-        <h1> Count: {count2}</h1>
+<button onClick={()=>{
+  // ! NEVER UPDATE STATE VARIABLE DIRECTLY 
+
+  this.setState({
+    count:this.state.count+1, 
+  })
+
+
+
+}}>Increase</button>
        <h2> name: {name} </h2>
        <h3>loaction:{location}</h3>
        <h4>contact:{contact}</h4>
