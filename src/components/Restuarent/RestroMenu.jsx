@@ -1,32 +1,32 @@
 import { useEffect, useState } from "react";
 import Shimmar from "../Shimmar";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../../utils/constant";
+import useRestaurentMenu from "../../utils/useRestaurentMenu";
 
 export default function RestroMenu(){
-const [resInfo, setResInfo] = useState(null);
+
 
 
 const {resId} = useParams();
 
 
+const resInfo=useRestaurentMenu(resId);
 
+    // useEffect(()=>{
+    //     console.log("useEffect called nidha");
+    //   fetchMenu();
+    // },[])
 
-    useEffect(()=>{
-        console.log("useEffect called nidha");
-      fetchMenu();
-    },[])
-
-     const fetchMenu= async()=>{
-        console.log("fetchMenu called");
-    const data = await fetch( MENU_API+resId
+//      const fetchMenu= async()=>{
+//         console.log("fetchMenu called");
+//     const data = await fetch( MENU_API+resId
   
-);
+// );
       
-      const json= await data.json();
-      console.log("menu:", json);
-      setResInfo(json.data );
-     } 
+//       const json= await data.json();
+//       console.log("menu:", json);
+//       setResInfo(json.data );
+//      } 
 
  const {name, cuisines, costForTwoMessage,avgRatingString,totalRatingsString,sla,availability,aggregatedDiscountInfo,badges
 

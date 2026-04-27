@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { CDN_URL } from "../utils/constant";
 
 
 export default  function Header (){
@@ -22,7 +23,7 @@ useEffect(()=>{
       <div className=" h-12 w-12  overflow-hidden  ">
         <img 
         className="h-full w-full rounded-full object-cover"
-        src="" alt="no image"/>
+        src={CDN_URL} alt="no image"/>
       </div>
       <div className="    ">
         <ul className="flex font-bold text-lg  gap-3  ">

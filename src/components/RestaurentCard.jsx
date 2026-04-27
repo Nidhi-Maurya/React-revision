@@ -17,7 +17,7 @@ export default function RestaurentCard({ resData }) {
       
       {/* Image */}
       <img
-        src={imageUrl}
+        src={imageUrl} 
         alt="restaurant"
         className="w-full h-48 object-cover"
       />
