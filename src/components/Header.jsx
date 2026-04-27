@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constant";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 export default  function Header (){
   const[buttonUpdate, setButtonUpdate]=useState("Login");
 let btnName="Login";
  
-
-useEffect(()=>{
-
-  console.log("useEffect is called nooo");
-
-
-},[])
+const onlineStatus=useOnlineStatus();
 
 
 
@@ -27,6 +22,7 @@ useEffect(()=>{
       </div>
       <div className="    ">
         <ul className="flex font-bold text-lg  gap-3  ">
+          <li>Online Status : { onlineStatus ?"✅":"🔴 " } </li>
           <li>
             <Link to="/">Home</Link>
           </li>

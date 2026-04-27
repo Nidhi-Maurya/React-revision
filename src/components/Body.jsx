@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import RestaurentCard from "./RestaurentCard";
 import Shimmar from "./Shimmar";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 export default function Body() {
   // hooks state
@@ -34,11 +35,13 @@ export default function Body() {
     setFilteredRestuarent(restaurants || []);
   };
 
-  // conditional rendering
+const onlineStatus=useOnlineStatus();
 
-  // if(listOfRestuarent.length===0){
-  //   return <Shimmar/>
-  // }
+if(onlineStatus===false){
+  return <h1>Looks like you are offline!! Please check your internet connection</h1>
+}
+
+
 
   return listOfRestuarent.length === 0 ? (
     <Shimmar />
