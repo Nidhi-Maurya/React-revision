@@ -17,13 +17,6 @@ setOnlineStatus(false)
 
    },[])
 
-
-
-
-
-
-
-
 //! boolean 
   return onlineStatus;
 

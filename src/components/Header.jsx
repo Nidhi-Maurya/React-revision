@@ -33,7 +33,7 @@ const onlineStatus=useOnlineStatus();
           <Link to="/contact"> Contact Us</Link>
         </li>
         <li>
-          <Link to="/cart"> Cart</Link>
+          <Link to="/grocery "> Grocery</Link>
         </li>
           
         <button className="border cursor-pointer px-4  rounded-xl"
