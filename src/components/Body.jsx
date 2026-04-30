@@ -48,8 +48,8 @@ if(onlineStatus===false){
   ) : (
     <>
       <div className="flex flex-row">
-        <div className="flex ">
-          <div className=" gap-2 ">
+        <div className="flex gap-4  ">
+          <div className="  ">
             <input
               type="text"
               placeholder="Search here..."
@@ -74,13 +74,13 @@ if(onlineStatus===false){
                 setFilteredRestuarent(filteredRestuarent);
                 // console.log("button clicked",searchText);
               }}
-              className="border  px-6 py-2 rounded-xl cursor-pointer "
+              className="border  px-6 py-2 rounded-lg cursor-pointer "
             >
               Search
             </button>
           </div>
-
-          <button
+<div className="mt-1 p-3 flex items-center">
+    <button
             onClick={() => {
               //filter logic
               console.log("Top Rated Button Clicked");
@@ -91,10 +91,12 @@ if(onlineStatus===false){
 
               setListOfRestuarent(Filteredlist);
             }}
-            className="   cursor-pointer "
+            className="   cursor-pointer border rounded-lg  px-6 py-2  "
           >
             Top Rated Buttons
           </button>
+</div>
+        
         </div>
       </div>
 

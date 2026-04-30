@@ -21,7 +21,7 @@ const onlineStatus=useOnlineStatus();
         src={CDN_URL} alt="no image"/>
       </div>
       <div className="    ">
-        <ul className="flex font-bold text-lg  gap-3  ">
+        <ul className="flex font-bold text-lg  gap-9  ">
           <li>Online Status : { onlineStatus ?"✅":"🔴 " } </li>
           <li>
             <Link to="/">Home</Link>
