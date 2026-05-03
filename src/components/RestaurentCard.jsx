@@ -6,22 +6,36 @@ export default function RestaurentCard({ resData }) {
     costForTwo,
     cloudinaryImageId,
     sla,
+    locality,
   } = resData?.info;
 
   const imageUrl =
     "https://media-assets.swiggy.com/swiggy/image/upload/" +
     cloudinaryImageId;
 
+
+
   return (
-    <div className="w-full max-w-sm mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
+   <>
+
+
+
+
+
+
+   
+    <div className="w-full max-w-sm mx-auto bg-gray-200 rounded-xl shadow-md hover:shadow-lg transition overflow-hidden">
       
       {/* Image */}
-      <img
+      <div className="rounded-xl">
+<img
         src={imageUrl} 
         alt="restaurant"
-        className="w-full h-48 object-cover"
+        className=" p-5 w-full h-56 object-cover "
       />
 
+
+        </div>
       {/* Content */}
       <div className="p-4">
         
@@ -47,9 +61,26 @@ export default function RestaurentCard({ resData }) {
         <p className="text-gray-700 font-medium mt-2">
           {costForTwo}
         </p>
+        <p className="text-gray-700 font-medium mt-2">{locality}</p>
 
       
       </div>
     </div>
+
+   
+   </>
   );
 }
+export const withPromoted = (RestaurentCard) => {
+  return (props) => {
+    return (
+      <div className="relative">
+        <label className="absolute bg-gray-800 text-white px-2 py-1 text-xs font-semibold  rounded">
+         Promoted
+        </label>
+        <RestaurentCard {...props} />
+      </div>
+    );
+  };
+};
+

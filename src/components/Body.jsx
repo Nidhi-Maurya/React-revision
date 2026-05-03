@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import RestaurentCard from "./RestaurentCard";
+import RestaurentCard,{ withPromoted} from "./RestaurentCard";
+
 import Shimmar from "./Shimmar";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -12,27 +13,50 @@ export default function Body() {
   const [searchText, setSearchText] = useState("");
   const [filteredRestuarent, setFilteredRestuarent] = useState([]);
 
-  console.log("body rendered5");
+  const  RestaurantCardPromoted=withPromoted(RestaurentCard);
+
+  console.log("body rendered5",listOfRestuarent);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.4420427&lng=77.02065379999999&carousel=true&third_party_vendor=1",
-    );
+    // const data = await fetch(
+    //   "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.4420427&lng=77.02065379999999&carousel=true&third_party_vendor=1",
+    // );
+
+
+    const data =await fetch(
+      "https://corsproxy.io/?https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.4349272&lng=77.0392319&carousel=true&third_party_vendor=1",
+    )
     const json = await data.json();
+
+    console.log("json:", json.data);
 
     const restaurants = json?.data?.cards
       ?.map((c) => c?.card?.card)
       ?.find((c) => c?.gridElements?.infoWithStyle?.restaurants)?.gridElements
       ?.infoWithStyle?.restaurants;
 
-     console.log("restaurants:", restaurants);
 
     setListOfRestuarent(restaurants || []);
     setFilteredRestuarent(restaurants || []);
+
+
+
+    console.log("nidhi ", json.data.cards);
+
+
+
+const totalResturents=json?.data?.cards
+      ?.map((c) => c?.restaurantCount)?.find((c) => c)?.restaurantCount;
+
+
+
+      console.log("totalResturents:", totalResturents);
+
+
   };
 
 const onlineStatus=useOnlineStatus();
@@ -102,7 +126,17 @@ if(onlineStatus===false){
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredRestuarent.map((res, id) => (
-         <Link  key={res.info.id} to={`/restaurants/${res.info.id}`}>  <RestaurentCard resData={res} /></Link>
+         <Link  key={res.info.id} to={`/restaurants/${res.info.id}`}> 
+         
+
+{
+ res.info.promoted ? <RestaurantCardPromoted   resData={res} /> :  <RestaurentCard resData={res} />
+}
+
+
+         
+          
+          </Link>
         ))}
       </div>
     </>
