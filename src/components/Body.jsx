@@ -28,7 +28,7 @@ export default function Body() {
 
 
     const data =await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.4349272&lng=77.0392319&carousel=true&third_party_vendor=1",
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.4420427&lng=77.02065379999999&carousel=true&third_party_vendor=1",
     )
     const json = await data.json();
 
@@ -45,16 +45,12 @@ export default function Body() {
 
 
 
-    console.log("nidhi ", json.data.cards);
+console.log("restaurants:", restaurants);
 
 
 
-const totalResturents=json?.data?.cards
-      ?.map((c) => c?.restaurantCount)?.find((c) => c)?.restaurantCount;
 
 
-
-      console.log("totalResturents:", totalResturents);
 
 
   };
