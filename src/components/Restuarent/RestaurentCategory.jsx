@@ -1,14 +1,14 @@
 import { TiArrowSortedDown } from "react-icons/ti";
 import RestaurentItemList from "./RestaurentItemList";
   import {useState} from "react"
-export default function RestaurentCategory({data}){
-const  [showItems ,setShowItems] = useState(false)
+export default function RestaurentCategory({data,showItems,setShowIndex}){
+// const  [showItems ,setShowItems] = useState(false)
 
 
 
 
   const  handleClicked=()=>{
-   setShowItems(!showItems);
+                 setShowIndex()
   }
 
   return (
