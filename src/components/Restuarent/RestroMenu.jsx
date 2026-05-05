@@ -85,7 +85,7 @@ console.log("mauryavi:", regularCards);
        <div className=" mt-4 justify-center items-center w-6/12 mx-auto p-5 rounded-lg shadow-md text-center ">
          <h1 className="font-semibold text-xl">  Menu </h1>
 
-{categories.map((category)=><RestaurentCategory data={category?.card?.card}/>)}
+{categories.map((category)=><RestaurentCategory key={category.card.card.title} data={category?.card?.card}/>)}
 
         </div>
 
