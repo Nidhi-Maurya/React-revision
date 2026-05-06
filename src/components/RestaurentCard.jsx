@@ -1,3 +1,8 @@
+
+import { useContext } from "react";
+import UserContext from "../utils/userContext";   
+
+
 export default function RestaurentCard({ resData }) {
   const {
     name,
@@ -12,6 +17,8 @@ export default function RestaurentCard({ resData }) {
   const imageUrl =
     "https://media-assets.swiggy.com/swiggy/image/upload/" +
     cloudinaryImageId;
+
+const data= useContext(UserContext);
 
 
 
@@ -62,6 +69,8 @@ export default function RestaurentCard({ resData }) {
           {costForTwo}
         </p>
         <p className="text-gray-700 font-medium mt-2">{locality}</p>
+
+        <p>{data.loggedInUser}</p>
 
       
       </div>

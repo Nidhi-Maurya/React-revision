@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 
 export default  function Header (){
@@ -9,7 +10,9 @@ export default  function Header (){
 let btnName="Login";
  
 const onlineStatus=useOnlineStatus();
+const data= useContext(UserContext);
 
+console.log("data in header:", data);
 
 
   return (
@@ -44,6 +47,8 @@ const onlineStatus=useOnlineStatus();
           }}
         
         >{buttonUpdate}</button>
+
+        <li>{data.loggedInUser}</li>
         </ul>
       </div>
     </div>

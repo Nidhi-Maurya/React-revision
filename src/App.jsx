@@ -8,7 +8,8 @@ import { createBrowserRouter ,Outlet,RouterProvider} from "react-router-dom"
 import RestroMenu from "./components/Restuarent/RestroMenu"
 // import Grocery from "./components/Grocery"
 import { lazy,Suspense } from "react"
-
+import UserContext from "./utils/userContext"
+import { useState,useEffect } from "react"
 // https://www.swiggy.com/mapi/misc_new/skeleton?lat=28.4349272&lng=77.0392319  scalaton api for shimmar ui 
 
 // Chunking
@@ -26,14 +27,33 @@ const Grocery=lazy(()=>import("./components/Grocery"))
 
 
 function App() {
+
+const [userName,setUserName] =useState();
+
+
+
+
+
+useEffect(()=>{
+  const data={
+  name:" Ishu Maurya",
+
+  
+}
+  setUserName(data.name);
+},[])
+
   return (
+    <UserContext.Provider value={{loggedInUser:"Nidhu "}}>
     <div className="space-y-3">
-     
+     <UserContext.Provider value={{loggedInUser:userName}}>
        <Header />
-    
+      </UserContext.Provider>
     <Outlet/>
+</div>
+    </UserContext.Provider>
      
-    </div>
+    
   )
 }
 
