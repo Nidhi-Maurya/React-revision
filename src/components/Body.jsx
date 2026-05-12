@@ -5,7 +5,8 @@ import RestaurentCard,{ withPromoted} from "./RestaurentCard";
 import Shimmar from "./Shimmar";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/userContext";
+import { useContext } from "react";
 export default function Body() {
   // hooks state
 
@@ -20,6 +21,13 @@ export default function Body() {
   useEffect(() => {
     fetchData();
   }, []);
+
+
+
+  const {loggedInUser,userName,setUserName} = useContext(UserContext);
+
+  console.log("loggedInUser in body:", loggedInUser);
+  console.log("userName in body:",userName);
 
   const fetchData = async () => {
     // const data = await fetch(
@@ -42,16 +50,6 @@ export default function Body() {
 
     setListOfRestuarent(restaurants || []);
     setFilteredRestuarent(restaurants || []);
-
-
-
-console.log("restaurants:", restaurants);
-
-
-
-
-
-
 
   };
 
@@ -115,9 +113,27 @@ if(onlineStatus===false){
           >
             Top Rated Buttons
           </button>
+
+
+
+
+
+          <div className="ml-8 p-3 flex items-center h-8 w-8 "> 
+ 
+  <input type="text"value={userName} onChange={(e) => setUserName(e.target.value)} className=" border border-black"/>
 </div>
+</div>
+
+
+
         
         </div>
+
+
+
+
+
+
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

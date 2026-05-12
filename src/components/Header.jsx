@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 
 export default  function Header (){
@@ -12,7 +13,11 @@ let btnName="Login";
 const onlineStatus=useOnlineStatus();
 const data= useContext(UserContext);
 
-console.log("data in header:", data);
+
+// subscribing to the store using selector....
+const cartItems=useSelector((store)=>store.cart.items);
+console.log(cartItems);
+
 
 
   return (
@@ -38,6 +43,12 @@ console.log("data in header:", data);
         <li>
           <Link to="/grocery "> Grocery</Link>
         </li>
+
+          <li>
+          <Link to="/cart">Cart - ({cartItems.length} items)</Link>
+        </li>
+
+
           
         <button className="border cursor-pointer px-4  rounded-xl"
           onClick={()=>{

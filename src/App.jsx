@@ -10,6 +10,10 @@ import RestroMenu from "./components/Restuarent/RestroMenu"
 import { lazy,Suspense } from "react"
 import UserContext from "./utils/userContext"
 import { useState,useEffect } from "react"
+import {Provider } from "react-redux"
+import appStore from "./store/appStore"
+import CartDetails from "./components/Restuarent/CardDetails"
+
 // https://www.swiggy.com/mapi/misc_new/skeleton?lat=28.4349272&lng=77.0392319  scalaton api for shimmar ui 
 
 // Chunking
@@ -44,15 +48,17 @@ useEffect(()=>{
 },[])
 
   return (
-    <UserContext.Provider value={{loggedInUser:"Nidhu "}}>
+     <Provider store={appStore}>
+      <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
     <div className="space-y-3">
-     <UserContext.Provider value={{loggedInUser:userName}}>
+     
        <Header />
-      </UserContext.Provider>
+     
     <Outlet/>
 </div>
     </UserContext.Provider>
      
+     </Provider>
     
   )
 }
@@ -74,6 +80,13 @@ const appRouter = createBrowserRouter([
   {path: "/contact",
   element: <Contact  />
   },
+{
+  path:"/cart",
+  element:<CartDetails />
+},
+
+
+
   {
     path:'/grocery',
     element: <Suspense fallback={<h1>Loading... </h1>}><Grocery/></Suspense>
@@ -81,7 +94,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/restaurants/:resId",  
     element: <RestroMenu/>
-  }
+  },
 ],
     errorElement: <Error/>
   },

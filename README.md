@@ -109,3 +109,14 @@ in useEffect we will fetch the data inside the useEffect
    }
 
    export default UserClass;  
+
+
+
+   # Redux ToolKit
+   // Instal @reduxjs/toolkit and react-redux library
+   -- Build Our Store
+   --connect our store to our app 
+   -create slice (cartSlice)
+   -dispatch(action)
+   -selector
+
