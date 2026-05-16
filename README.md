@@ -120,3 +120,26 @@ in useEffect we will fetch the data inside the useEffect
    -dispatch(action)
    -selector
 
+
+
+## TESTING for Developer 
+
+  1- Unit Testing 
+  2-Integration Testing
+  3-End to End Testing  (e2e testing)
+
+  ## Setup testing 
+
+  --- Install testing library
+  --- Install Jest Library
+  --- Install Babel Dependencies
+  --- Configure Babel 
+  ---jest configuration 
+  --- install js  dom library
+  -- Inclued @babel/preset-react inside my babel config
+  -- Install @testing-library/jest-dom
+
+ --- command = npx create-jest 
+
+
+ ## Install @babel/preset-react this libaray for make JSX work in test cases
