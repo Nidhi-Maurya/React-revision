@@ -1,52 +1,53 @@
-import { CDN_URL } from "../../utils/constant";
+import { FiPlus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
+import { ITEM_IMAGE_URL } from "../../utils/constant";
+import { formatPrice } from "../../utils/normalizers/swiggy";
 import { addItem } from "../../store/cartSlice";
 
-export default function RestaurentItemList({ items }) {
+export default function RestaurentItemList({ items = [] }) {
+  const dispatch = useDispatch();
 
-  const dispatch=useDispatch();
-
-  const handleAddItem=(item)=>{
-   dispatch(addItem(item));
-
-   {
-
-   }
-  }
-  
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   return (
-    <>
-      <div className="">
-        {items.map((item) => (
+    <div className="item-list">
+      {items.map((item, index) => {
+        const info = item?.card?.info || item?.info || {};
+        const imageUrl = info.imageId ? ITEM_IMAGE_URL + info.imageId : "";
 
-
-
-
-          <div
-            key={item.card.info.id}
-            className="p-2 m-2 border border-gray-500 rounded-xl"
-          >
-            <div className="flex w-9/12">
-              <div className=" flex flex-col items-start justify-between">
-                <span className="font-semibold"> {item.card.info.name}</span>
-                <span className=" font-semibold">
-                  {" "}
-                  Rs: {item.card.info.price / 100}
+        return (
+          <article className="menu-item" key={info.id || `${info.name}-${index}`}>
+            <div className="item-copy">
+              <h3>{info.name || "Menu item"}</h3>
+              <p className="price-line">{formatPrice(info)}</p>
+              {info.description && <p className="muted">{info.description}</p>}
+              {info.offerTags?.[0]?.title && (
+                <span className="mini-offer">
+                  {info.offerTags[0].title} {info.offerTags[0].subTitle}
                 </span>
-
-                <h3> {item.card.info.offer}</h3>
-              </div>
-
-              <p className="text-sm">{item.card.info.description}</p>
+              )}
             </div>
-            <div>
-              <img  src={CDN_URL + item.card.info.imageId} alt={item.card.info.name} className="w-14 h-14" />
-              <button onClick={() => handleAddItem(item) } className="p-2 m-2 bg-white shadow-lg ">Add</button>
+
+            <div className="item-media">
+              {imageUrl ? (
+                <img src={imageUrl} alt={info.name || "Dish"} loading="lazy" />
+              ) : (
+                <div className="dish-fallback">Dish</div>
+              )}
+              <button
+                className="add-button"
+                onClick={() => handleAddItem(item)}
+                type="button"
+              >
+                <FiPlus aria-hidden="true" />
+                Add
+              </button>
             </div>
-          </div>
-        ))}
-      </div>
-    </>
+          </article>
+        );
+      })}
+    </div>
   );
 }

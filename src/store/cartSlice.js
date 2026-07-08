@@ -15,7 +15,7 @@ import { createSlice } from "@reduxjs/toolkit";
     // Mutating the state directly is allowed in redux toolkit because it uses immer library under the hood which takes care of immutability
   state.items.push(action.payload);
 },
-    removeItem:(state,action)=>{
+    removeItem:(state)=>{
       state.items.pop();
     },
 

@@ -1,34 +1,19 @@
 import { TiArrowSortedDown } from "react-icons/ti";
 import RestaurentItemList from "./RestaurentItemList";
-  import {useState} from "react"
-export default function RestaurentCategory({data,showItems,setShowIndex}){
-// const  [showItems ,setShowItems] = useState(false)
 
-
-
-
-  const  handleClicked=()=>{
-                 setShowIndex()
-  }
+export default function RestaurentCategory({ data, showItems, setShowIndex }) {
+  const itemCount = data?.itemCards?.length || 0;
 
   return (
-    <>
-     <div className=" ">
-      {/* Header */}
-     <div className="  px-5 py-2  bg-gray-200 border mt-3 shadow-md   p-2 cursor-pointer rounded-md">
-<div className="flex justify-between" onClick={handleClicked}>
-        <span className="font-semibold">{data.title} ({data.itemCards.length})</span>
-      <span> <TiArrowSortedDown /> </span>
-</div>
-     
+    <article className={showItems ? "menu-category is-open" : "menu-category"}>
+      <button className="category-trigger" onClick={setShowIndex} type="button">
+        <span>
+          {data.title} ({itemCount})
+        </span>
+        <TiArrowSortedDown aria-hidden="true" />
+      </button>
 
-      {/* Accordion body*/}
-
-     {showItems &&  <RestaurentItemList items={data.itemCards} />}
-      </div>
-     </div>
-
-
-    </>
-  )
+      {showItems && <RestaurentItemList items={data.itemCards} />}
+    </article>
+  );
 }

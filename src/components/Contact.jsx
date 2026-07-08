@@ -1,21 +1,35 @@
-export default function Contact(){
-  return(
-    <>
-    <h1 className="font-bold text-2xl p-4 m-4 ">Contact Us Page</h1>
+import { FiMail, FiSend, FiUser } from "react-icons/fi";
 
-      <form>
-    <div className="flex flex-col items-center justify-center">
-      <input type="text" placeholder="Enter your name" className="border border-gray-300 p-2 m-2"/>
-    <input type="email" placeholder="Enter your email" className="border border-gray-300 p-2 m-2"/>
-   <textarea
-  placeholder="Type Your Message"
-  className="border border-gray-300 p-2 m-2"
-/>
-    <button type="submit" className="bg-blue-500 text-white p-2 m-2">Submit</button>
+export default function Contact() {
+  return (
+    <main className="page-shell cart-page">
+      <div className="menu-title-row">
+        <div>
+          <p className="eyebrow">Support</p>
+          <h1>Contact Us Page</h1>
+        </div>
+      </div>
 
-    </div>
+      <form className="toolbar-panel" onSubmit={(event) => event.preventDefault()}>
+        <label className="search-field">
+          <FiUser aria-hidden="true" />
+          <input type="text" placeholder="Enter your name" />
+        </label>
+        <label className="search-field">
+          <FiMail aria-hidden="true" />
+          <input type="email" placeholder="Enter your email" />
+        </label>
+        <label className="search-field">
+          <textarea
+            placeholder="Type Your Message"
+            className="contact-textarea"
+          />
+        </label>
+        <button className="icon-button" type="submit">
+          <FiSend aria-hidden="true" />
+          Submit
+        </button>
       </form>
-
-    </>
-  )
+    </main>
+  );
 }

@@ -1,111 +1,102 @@
-import { useEffect, useState } from "react";
-import Shimmar from "../Shimmar";
+import { useState } from "react";
+import { FiClock, FiHeart, FiRefreshCcw, FiStar } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../../utils/useRestaurentMenu";
-import  RestaurentCategory from "./RestaurentCategory";
-export default function RestroMenu(){
+import Shimmar from "../Shimmar";
+import RestaurentCategory from "./RestaurentCategory";
 
-  const [showIndex,setShowIndex] =useState();
+export default function RestroMenu() {
+  const [showIndex, setShowIndex] = useState(0);
+  const { resId } = useParams();
+  const { menu, isLoading, error } = useRestaurentMenu(resId);
+  const restaurant = menu?.restaurant || {};
+  const categories = menu?.categories || [];
 
+  if (isLoading) {
+    return (
+      <main className="page-shell section-stack">
+        <Shimmar />
+      </main>
+    );
+  }
 
-
-
-const {resId} = useParams();
-
-
-const resInfo=useRestaurentMenu(resId);
-
-    // useEffect(()=>{
-    //     console.log("useEffect called nidha");
-    //   fetchMenu();
-    // },[])
-
-//      const fetchMenu= async()=>{
-//         console.log("fetchMenu called");
-//     const data = await fetch( MENU_API+resId
-  
-// );
-      
-//       const json= await data.json();
-//       console.log("menu:", json);
-//       setResInfo(json.data );
-//      } 
-
- const {name, cuisines, costForTwoMessage,avgRatingString,totalRatingsString,sla,availability,aggregatedDiscountInfo,badges
-
-} = resInfo?.cards[2]?.card?.card?.info || {};
-
-// const itemCards =
-//   resInfo?.cards[6]?.card?.card?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
-
-
-// console.log("itemCards:",itemCards);
-
-
-const regularCards = resInfo?.cards
-  ?.find(card => card?.groupedCard)
-  ?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-
-const itemCategory = regularCards?.find(
-  c =>
-    c?.card?.card?.["@type"] ===
-    "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-);
-
-
-const categories = regularCards?.filter(
-  (c) =>
-    c?.card?.card?.["@type"] ===
-    "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-) || [];
-
-
-
-const itemCards = itemCategory?.card?.card?.itemCards;
-
-
+  if (error) {
+    return (
+      <main className="page-shell">
+        <div className="state-panel">
+          <FiRefreshCcw aria-hidden="true" />
+          <h1>Menu could not load</h1>
+          <p>{error}</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
-    <>
-    <div className=" ">
-      <h1 className="text-xl font-bold text-center mt-5">
-{name}
-      </h1>
-       <div className=" mx-96 self-start border border-gray-200 shadow-md px-8 py-5  rounded-xl flex-row gap-5 justify-center items-center mt-5">
+    <main className="menu-page">
+      <section className="menu-hero">
+        <div>
+          <p className="eyebrow">Live menu</p>
+          <h1>{restaurant.name || "Restaurant menu"}</h1>
+          <p className="hero-copy">
+            {(restaurant.cuisines || []).join(", ") || "Freshly prepared food"}
+          </p>
+        </div>
+        <div className="menu-summary">
+          <span>
+            <FiStar aria-hidden="true" />
+            {restaurant.avgRatingString || restaurant.avgRating || "New"} (
+            {restaurant.totalRatingsString || "ratings"})
+          </span>
+          <span>
+            <FiClock aria-hidden="true" />
+            {restaurant.sla?.slaString ||
+              `${restaurant.sla?.deliveryTime || "--"} mins`}
+          </span>
+          <span>
+            <FiHeart aria-hidden="true" />
+            {restaurant.costForTwoMessage || "Great value"}
+          </span>
+        </div>
+      </section>
 
+      <section className="page-shell menu-content">
+        {restaurant.aggregatedDiscountInfo?.shortDescriptionList?.[0]?.meta && (
+          <div className="inline-alert offer">
+            {restaurant.aggregatedDiscountInfo.shortDescriptionList[0].meta}
+          </div>
+        )}
 
-      <p>{ cuisines} - {costForTwoMessage}</p>
-
-      <h1>{avgRatingString},({totalRatingsString})</h1>
-      <h1>{sla?.deliveryTime} minutes</h1>
-      <h1>{availability?.opened ? "Open" : "Closed"}</h1>
-<h1>{aggregatedDiscountInfo?.shortDescriptionList[0]?.meta}</h1>
-<h1>{badges?.imageBased?.length > 0 ? "Has Badges" : "No Badges"}</h1>
-
-
+        <div className="menu-title-row">
+          <div>
+            <p className="eyebrow">Menu</p>
+            <h2>{menu?.itemCount || 0} dishes across {categories.length} sections</h2>
+          </div>
+          <span className={restaurant.availability?.opened ? "open-pill" : "open-pill closed"}>
+            {restaurant.availability?.opened === false ? "Closed" : "Open now"}
+          </span>
         </div>
 
-       <div className=" mt-4 justify-center items-center w-6/12 mx-auto p-5 rounded-lg shadow-md text-center ">
-         <h1 className="font-semibold text-xl">  Menu </h1>
-
-{categories.map((category,index)=><RestaurentCategory key={category.card.card.title} data={category?.card?.card} 
-
-//! this is controlled component 
-showItems={index===showIndex ? true : false}
-setShowIndex={()=>setShowIndex(index)}
-
-
-/>)}
-
-        </div>
-
-
-      {/* <h1>{itemCards?.length} items</h1>
-  
-      <ul>
-        {itemCards?.map((item,id)=> <li key={id} >{item.card.info.name } - {" Rs."}{item.card.info.price/100}</li>)}
-      </ul> */}
-    </div>
-    </>
-  )
+        {categories.length ? (
+          <div className="accordion-list">
+            {categories.map((category, index) => (
+              <RestaurentCategory
+                data={category}
+                key={`${category.title}-${index}`}
+                showItems={index === showIndex}
+                setShowIndex={() =>
+                  setShowIndex((current) => (current === index ? -1 : index))
+                }
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="state-panel compact">
+            <h2>No menu sections found</h2>
+            <p>Swiggy changed the response shape or this menu is unavailable.</p>
+          </div>
+        )}
+      </section>
+    </main>
+  );
 }

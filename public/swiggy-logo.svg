@@ -1,0 +1,6 @@
+<svg width="184" height="52" viewBox="0 0 184 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="184" height="52" rx="14" fill="#FC8019"/>
+  <path d="M26 35.5c-4.8-5.8-7.2-10.3-7.2-13.6 0-6.7 5.4-12.2 12.2-12.2s12.2 5.5 12.2 12.2c0 3.3-2.4 7.8-7.2 13.6L31 41.6l-5-6.1Z" fill="white"/>
+  <path d="M31 26.7a4.8 4.8 0 1 0 0-9.6 4.8 4.8 0 0 0 0 9.6Z" fill="#FC8019"/>
+  <text x="56" y="34" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800">Swiggy</text>
+</svg>

@@ -1,22 +1,20 @@
 import { useRouteError } from "react-router-dom";
 
-
-export default function Error (){
-
-const err=useRouteError();
-
-console.log("error is ", err);
-
-
+export default function Error() {
+  const err = useRouteError();
 
   return (
-    <>
-    
-     <h1 className="text-2xl font-bold text-center mt-70">
-      OOPS! Something went wrong. Please try again later.
-     </h1>
-     <h3 className="text-xl font-semibold text-center mt-4">{err.status} : {err.statusText}</h3>
-    
-    </>
-  )
+    <main className="page-shell">
+      <div className="state-panel">
+        <span className="state-icon">!</span>
+        <h1>OOPS! Something went wrong.</h1>
+        <p>Please try again later.</p>
+        {(err?.status || err?.statusText) && (
+          <p>
+            {err.status} : {err.statusText}
+          </p>
+        )}
+      </div>
+    </main>
+  );
 }

@@ -1,6 +1,5 @@
 import About from "./components/About"
 import Body from "./components/Body"
-import Cart from "./components/Cart"
 import Contact from "./components/Contact"
 import Error from "./components/Error"
 import Header from "./components/Header"
@@ -9,7 +8,7 @@ import RestroMenu from "./components/Restuarent/RestroMenu"
 // import Grocery from "./components/Grocery"
 import { lazy,Suspense } from "react"
 import UserContext from "./utils/userContext"
-import { useState,useEffect } from "react"
+import { useState } from "react"
 import {Provider } from "react-redux"
 import appStore from "./store/appStore"
 import CartDetails from "./components/Restuarent/CardDetails"
@@ -25,32 +24,14 @@ import CartDetails from "./components/Restuarent/CardDetails"
 
 const Grocery=lazy(()=>import("./components/Grocery"))
 
-
-
-
-
-
 function App() {
 
-const [userName,setUserName] =useState();
-
-
-
-
-
-useEffect(()=>{
-  const data={
-  name:" Ishu Maurya",
-
-  
-}
-  setUserName(data.name);
-},[])
+const [userName,setUserName] =useState("Ishu Maurya");
 
   return (
      <Provider store={appStore}>
       <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
-    <div className="space-y-3">
+    <div>
      
        <Header />
      
@@ -89,7 +70,7 @@ const appRouter = createBrowserRouter([
 
   {
     path:'/grocery',
-    element: <Suspense fallback={<h1>Loading... </h1>}><Grocery/></Suspense>
+    element: <Suspense fallback={<main className="page-shell"><div className="state-panel compact">Loading...</div></main>}><Grocery/></Suspense>
   },
   {
     path: "/restaurants/:resId",  

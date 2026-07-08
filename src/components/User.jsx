@@ -3,7 +3,7 @@ export default function User(){
 
 
 const [count,setCount]=useState(0);
-const [count2,setCount2]=useState(5); 
+const [count2]=useState(5); 
 
 
 

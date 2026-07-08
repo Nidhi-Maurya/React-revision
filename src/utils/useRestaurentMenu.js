@@ -1,37 +1,38 @@
 import { useEffect, useState } from "react";
-import { MENU_API } from "./constant";
+import { getRestaurantMenu } from "./api/swiggy";
 
+const useRestaurentMenu = (resId) => {
+  const [menu, setMenu] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
-const useRestaurentMenu=(resId)=>{
-// fetch menu data
+  useEffect(() => {
+    if (!resId) return undefined;
 
-const [resInfo,setResInfo]=useState(null);
+    const controller = new AbortController();
 
+    const fetchMenu = async () => {
+      try {
+        setIsLoading(true);
+        setError("");
+        const data = await getRestaurantMenu(resId, {
+          signal: controller.signal,
+        });
+        setMenu(data);
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          setError(err.message || "Unable to load this restaurant menu.");
+        }
+      } finally {
+        if (!controller.signal.aborted) setIsLoading(false);
+      }
+    };
 
-useEffect(()=>{
- fetchMenu();
+    fetchMenu();
+    return () => controller.abort();
+  }, [resId]);
 
-},[])
-
-const fetchMenu=async()=>{
-  const data= await fetch(MENU_API+resId);
-  const json=await data.json();
-  console.log("menu:", json);
-  setResInfo(json.data);
-}
-
-
-
-
-
- 
-
-return resInfo;
-
-
-
-}
-
-
+  return { menu, isLoading, error };
+};
 
 export default useRestaurentMenu;
