@@ -1,4 +1,4 @@
-export default function Shimmar() {
+export default function Shimmer() {
   return (
     <div className="restaurant-grid" aria-label="Loading restaurants">
       {Array.from({ length: 8 }).map((_, index) => (

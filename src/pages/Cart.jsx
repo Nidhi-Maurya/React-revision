@@ -1,9 +1,9 @@
 import { FiTrash2 } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../../store/cartSlice";
-import RestaurentItemList from "./RestaurentItemList";
+import { clearCart } from "../store/cartSlice";
+import RestaurantItemList from "../components/menu/RestaurantItemList";
 
-export default function CartDetails() {
+export default function Cart() {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ export default function CartDetails() {
         </div>
       ) : (
         <div className="cart-list">
-          <RestaurentItemList items={cartItems} />
+          <RestaurantItemList items={cartItems} />
         </div>
       )}
     </main>

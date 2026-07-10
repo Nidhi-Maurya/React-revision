@@ -1,17 +1,16 @@
-import About from "./components/About"
-import Body from "./components/Body"
-import Contact from "./components/Contact"
-import Error from "./components/Error"
-import Header from "./components/Header"
+import About from "./pages/About"
+import Home from "./pages/Home"
+import Contact from "./pages/Contact"
+import Error from "./pages/Error"
+import Header from "./components/layout/Header"
 import { createBrowserRouter ,Outlet,RouterProvider} from "react-router-dom"
-import RestroMenu from "./components/Restuarent/RestroMenu"
-// import Grocery from "./components/Grocery"
+import RestaurantMenu from "./pages/RestaurantMenu"
 import { lazy,Suspense } from "react"
-import UserContext from "./utils/userContext"
+import UserContext from "./contexts/UserContext"
 import { useState } from "react"
 import {Provider } from "react-redux"
 import appStore from "./store/appStore"
-import CartDetails from "./components/Restuarent/CardDetails"
+import Cart from "./pages/Cart"
 
 // https://www.swiggy.com/mapi/misc_new/skeleton?lat=28.4349272&lng=77.0392319  scalaton api for shimmar ui 
 
@@ -22,7 +21,7 @@ import CartDetails from "./components/Restuarent/CardDetails"
 // On Demand Loading
 
 
-const Grocery=lazy(()=>import("./components/Grocery"))
+const Grocery=lazy(()=>import("./pages/Grocery"))
 
 function App() {
 
@@ -52,7 +51,7 @@ const appRouter = createBrowserRouter([
 
       {
         path:"/",
-        element: <Body />
+        element: <Home />
       },
 {
     path: "/about",
@@ -63,7 +62,7 @@ const appRouter = createBrowserRouter([
   },
 {
   path:"/cart",
-  element:<CartDetails />
+  element:<Cart />
 },
 
 
@@ -74,7 +73,7 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/restaurants/:resId",  
-    element: <RestroMenu/>
+    element: <RestaurantMenu/>
   },
 ],
     errorElement: <Error/>

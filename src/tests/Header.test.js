@@ -1,8 +1,8 @@
 import { fireEvent,render,screen } from "@testing-library/react";
-import Header from "../Header";
+import Header from "../components/layout/Header";
 import {BrowserRouter} from "react-router-dom";
 import { Provider } from "react-redux";
-import appStore from "../../store/appStore";
+import appStore from "../store/appStore";
 import "@testing-library/jest-dom";
 
 
@@ -18,7 +18,7 @@ it ('should load header component with login button',()=>{
 </BrowserRouter>
 )
 
- const loginButton =screen.getByRole("button");
+ const loginButton =screen.getByRole("button", {name:/Login/});
 
  expect(loginButton).toBeInTheDocument();
 

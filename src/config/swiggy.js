@@ -5,6 +5,7 @@ export const ITEM_IMAGE_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
 
 export const SWIGGY_LOGO = "/swiggy-logo.svg";
+export const BRAND_LOGO = "/cravecraft-logo.svg";
 
 export const DEFAULT_LOCATION = {
   lat: "28.4420427",

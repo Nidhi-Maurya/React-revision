@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { FiClock, FiHeart, FiRefreshCcw, FiStar } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-import useRestaurentMenu from "../../utils/useRestaurentMenu";
-import Shimmar from "../Shimmar";
-import RestaurentCategory from "./RestaurentCategory";
+import useRestaurantMenu from "../hooks/useRestaurantMenu";
+import Shimmer from "../components/ui/Shimmer";
+import RestaurantCategory from "../components/menu/RestaurantCategory";
 
 export default function RestroMenu() {
   const [showIndex, setShowIndex] = useState(0);
   const { resId } = useParams();
-  const { menu, isLoading, error } = useRestaurentMenu(resId);
+  const { menu, isLoading, error } = useRestaurantMenu(resId);
   const restaurant = menu?.restaurant || {};
   const categories = menu?.categories || [];
 
   if (isLoading) {
     return (
       <main className="page-shell section-stack">
-        <Shimmar />
+        <Shimmer />
       </main>
     );
   }
@@ -80,7 +80,7 @@ export default function RestroMenu() {
         {categories.length ? (
           <div className="accordion-list">
             {categories.map((category, index) => (
-              <RestaurentCategory
+              <RestaurantCategory
                 data={category}
                 key={`${category.title}-${index}`}
                 showItems={index === showIndex}

@@ -1,10 +1,10 @@
 import { FiPlus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { ITEM_IMAGE_URL } from "../../utils/constant";
-import { formatPrice } from "../../utils/normalizers/swiggy";
+import { ITEM_IMAGE_URL } from "../../config/swiggy";
+import { formatPrice } from "../../services/swiggy/normalizers";
 import { addItem } from "../../store/cartSlice";
 
-export default function RestaurentItemList({ items = [] }) {
+export default function RestaurantItemList({ items = [] }) {
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {

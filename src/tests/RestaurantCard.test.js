@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import RestaurentCard from "../RestaurentCard";
+import RestaurantCard from "../components/restaurants/RestaurantCard";
 
 test("should render restaurant card details", () => {
   render(
-    <RestaurentCard
+    <RestaurantCard
       resData={{
         info: {
           name: "Test Kitchen",

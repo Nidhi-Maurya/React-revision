@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getRestaurantMenu } from "./api/swiggy";
+import { getRestaurantMenu } from "../services/swiggy/api";
 
-const useRestaurentMenu = (resId) => {
+const useRestaurantMenu = (resId) => {
   const [menu, setMenu] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -35,4 +35,4 @@ const useRestaurentMenu = (resId) => {
   return { menu, isLoading, error };
 };
 
-export default useRestaurentMenu;
+export default useRestaurantMenu;

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { getRestaurants } from "./api/swiggy";
+import { getRestaurants } from "../services/swiggy/api";
 
-const useRestaurentData = () => {
+const useRestaurantData = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [minRating, setMinRating] = useState(0);
@@ -57,4 +57,4 @@ const useRestaurentData = () => {
   };
 };
 
-export default useRestaurentData;
+export default useRestaurantData;

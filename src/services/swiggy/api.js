@@ -1,8 +1,8 @@
-import { createMenuUrl, createRestaurantListUrl } from "../constant";
+import { createMenuUrl, createRestaurantListUrl } from "../../config/swiggy";
 import {
   normalizeRestaurantList,
   normalizeRestaurantMenu,
-} from "../normalizers/swiggy";
+} from "./normalizers";
 
 const fetchJson = async (url, signal) => {
   const response = await fetch(url, { signal });
