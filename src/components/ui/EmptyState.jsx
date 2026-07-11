@@ -1,8 +1,8 @@
-import { FiAlertCircle } from "react-icons/fi";
 import { createElement } from "react";
+import { AlertIcon } from "./icons";
 
 export default function EmptyState({
-  icon: Icon = FiAlertCircle,
+  icon: Icon = AlertIcon,
   title,
   text,
   compact = false,

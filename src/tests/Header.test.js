@@ -1,4 +1,4 @@
-import { fireEvent,render,screen } from "@testing-library/react";
+import { render,screen } from "@testing-library/react";
 import Header from "../components/layout/Header";
 import {BrowserRouter} from "react-router-dom";
 import { Provider } from "react-redux";
@@ -8,7 +8,7 @@ import "@testing-library/jest-dom";
 
 
 
-it ('should load header component with login button',()=>{
+it ('should load header brand',()=>{
    
   render (
   <BrowserRouter>
@@ -18,9 +18,9 @@ it ('should load header component with login button',()=>{
 </BrowserRouter>
 )
 
- const loginButton =screen.getByRole("button", {name:/Login/});
+ const brand =screen.getByRole("link", {name:/CraveCraft home/});
 
- expect(loginButton).toBeInTheDocument();
+ expect(brand).toBeInTheDocument();
 
 })
 
@@ -66,7 +66,7 @@ it ('should load header component  cart',()=>{
 
 
 
-it ('should login change to logout in header component  cart',()=>{
+it ('should not render login button in header',()=>{
    
   render (
   <BrowserRouter>
@@ -76,12 +76,6 @@ it ('should login change to logout in header component  cart',()=>{
 </BrowserRouter>
 )
 
- const   loginButton =screen.getByRole("button", {name:"Login"});
-
- fireEvent.click(loginButton);
-
- const logOutButton=screen.getByRole("button",{name:"LogOut"})
-
- expect(logOutButton).toBeInTheDocument();
+ expect(screen.queryByRole("button", {name:"Login"})).not.toBeInTheDocument();
 
 })

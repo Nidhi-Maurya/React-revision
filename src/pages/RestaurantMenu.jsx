@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { FiClock, FiHeart, FiRefreshCcw, FiStar } from "react-icons/fi";
 import { useParams } from "react-router-dom";
+import { ClockIcon, HeartIcon, RefreshIcon, StarIcon } from "../components/ui/icons";
 import useRestaurantMenu from "../hooks/useRestaurantMenu";
 import Shimmer from "../components/ui/Shimmer";
 import RestaurantCategory from "../components/menu/RestaurantCategory";
@@ -24,7 +24,7 @@ export default function RestroMenu() {
     return (
       <main className="page-shell">
         <div className="state-panel">
-          <FiRefreshCcw aria-hidden="true" />
+          <RefreshIcon />
           <h1>Menu could not load</h1>
           <p>{error}</p>
         </div>
@@ -44,17 +44,17 @@ export default function RestroMenu() {
         </div>
         <div className="menu-summary">
           <span>
-            <FiStar aria-hidden="true" />
+            <StarIcon />
             {restaurant.avgRatingString || restaurant.avgRating || "New"} (
             {restaurant.totalRatingsString || "ratings"})
           </span>
           <span>
-            <FiClock aria-hidden="true" />
+            <ClockIcon />
             {restaurant.sla?.slaString ||
               `${restaurant.sla?.deliveryTime || "--"} mins`}
           </span>
           <span>
-            <FiHeart aria-hidden="true" />
+            <HeartIcon />
             {restaurant.costForTwoMessage || "Great value"}
           </span>
         </div>

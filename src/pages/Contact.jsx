@@ -1,4 +1,4 @@
-import { FiMail, FiSend, FiUser } from "react-icons/fi";
+import { MailIcon, SendIcon, UserIcon } from "../components/ui/icons";
 
 export default function Contact() {
   return (
@@ -12,11 +12,11 @@ export default function Contact() {
 
       <form className="toolbar-panel" onSubmit={(event) => event.preventDefault()}>
         <label className="search-field">
-          <FiUser aria-hidden="true" />
+          <UserIcon />
           <input type="text" placeholder="Enter your name" />
         </label>
         <label className="search-field">
-          <FiMail aria-hidden="true" />
+          <MailIcon />
           <input type="email" placeholder="Enter your email" />
         </label>
         <label className="search-field">
@@ -26,7 +26,7 @@ export default function Contact() {
           />
         </label>
         <button className="icon-button" type="submit">
-          <FiSend aria-hidden="true" />
+          <SendIcon />
           Submit
         </button>
       </form>

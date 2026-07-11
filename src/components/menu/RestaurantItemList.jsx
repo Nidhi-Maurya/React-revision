@@ -1,8 +1,8 @@
-import { FiPlus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { ITEM_IMAGE_URL } from "../../config/swiggy";
 import { formatPrice } from "../../services/swiggy/normalizers";
 import { addItem } from "../../store/cartSlice";
+import { PlusIcon } from "../ui/icons";
 
 export default function RestaurantItemList({ items = [] }) {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export default function RestaurantItemList({ items = [] }) {
                 onClick={() => handleAddItem(item)}
                 type="button"
               >
-                <FiPlus aria-hidden="true" />
+                <PlusIcon />
                 Add
               </button>
             </div>

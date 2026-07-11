@@ -1,5 +1,5 @@
-import { FiClock, FiMapPin, FiPackage, FiSun, FiTruck } from "react-icons/fi";
 import ActionButton from "../ui/ActionButton";
+import { ClockIcon, MapPinIcon, SunIcon } from "../ui/icons";
 import { DEFAULT_LOCATION } from "../../config/swiggy";
 
 export default function HeroBanner({ restaurantCount = 0, visibleCount = 0 }) {
@@ -8,44 +8,35 @@ export default function HeroBanner({ restaurantCount = 0, visibleCount = 0 }) {
       <div className="cc-shell cc-hero-grid">
         <div className="cc-hero-copy">
           <p className="cc-eyebrow">
-            <FiMapPin aria-hidden="true" /> {DEFAULT_LOCATION.label}
+            <MapPinIcon /> {DEFAULT_LOCATION.label}
           </p>
-          <h1>Good food, sorted by what you feel like eating.</h1>
+          <h1>Order from restaurants around you.</h1>
           <p>
-            Browse live restaurants, filter quickly, and add dishes from menus
-            that stay stable even when the API layout changes.
+            Search restaurants, compare delivery time, and add dishes from live
+            menus without losing your place.
           </p>
           <div className="cc-hero-actions">
-            <ActionButton icon={FiSun} variant="accent">
+            <ActionButton icon={SunIcon} variant="accent">
               Browse restaurants
             </ActionButton>
-            <ActionButton icon={FiClock}>Under 30 mins</ActionButton>
+            <ActionButton icon={ClockIcon}>Under 30 mins</ActionButton>
           </div>
         </div>
 
-        <div className="cc-hero-visual" aria-label="Live ordering summary">
-          <div className="cc-plate-wrap">
-            <img
-              alt="fresh salad bowl"
-              src="https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=900&auto=format&fit=crop"
-            />
-            <span className="cc-discount-badge">20% off</span>
-          </div>
-
-          <div className="cc-floating-card cc-floating-delivery">
-            <FiTruck aria-hidden="true" />
-            <div>
-              <strong>Fast delivery</strong>
-              <span>{visibleCount || "--"} filtered options</span>
-            </div>
-          </div>
-
-          <div className="cc-floating-card cc-floating-pickup">
-            <FiPackage aria-hidden="true" />
-            <div>
-              <strong>Live menus</strong>
-              <span>{restaurantCount || "--"} restaurants online</span>
-            </div>
+        <div className="cc-hero-photo-card" aria-label="Live ordering summary">
+          <img
+            alt="fresh meal bowl"
+            src="https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=900&auto=format&fit=crop"
+          />
+          <div className="cc-hero-stats">
+            <span>
+              <strong>{restaurantCount || "--"}</strong>
+              restaurants
+            </span>
+            <span>
+              <strong>{visibleCount || "--"}</strong>
+              matching
+            </span>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import { FiTrash2 } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
+import { TrashIcon } from "../components/ui/icons";
 import { clearCart } from "../store/cartSlice";
 import RestaurantItemList from "../components/menu/RestaurantItemList";
 
@@ -20,7 +20,7 @@ export default function Cart() {
           onClick={() => dispatch(clearCart())}
           type="button"
         >
-          <FiTrash2 aria-hidden="true" />
+          <TrashIcon />
           Clear Cart
         </button>
       </div>

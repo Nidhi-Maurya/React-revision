@@ -1,15 +1,15 @@
 import { useMemo, useState } from "react";
 import {
-  FiClock,
-  FiCoffee,
-  FiFilter,
-  FiRefreshCcw,
-  FiSearch,
-  FiSliders,
-  FiStar,
-  FiSun,
-  FiZap,
-} from "react-icons/fi";
+  ClockIcon,
+  CoffeeIcon,
+  FilterIcon,
+  RefreshIcon,
+  SearchIcon,
+  SlidersIcon,
+  StarIcon,
+  SunIcon,
+  ZapIcon,
+} from "../components/ui/icons";
 import HeroBanner from "../components/home/HeroBanner";
 import RestaurantCollection from "../components/restaurants/RestaurantCollection";
 import Shimmer from "../components/ui/Shimmer";
@@ -23,39 +23,39 @@ const cravingMoods = [
   {
     name: "Fire Bowl",
     query: "Biryani",
-    text: "Rice, spice, and a proper meal.",
+    text: "Biryani and rice bowls.",
     image:
       "https://images.unsplash.com/photo-1563379091339-03246963d51a?q=80&w=600&auto=format&fit=crop",
   },
   {
     name: "Slice Club",
     query: "Pizza",
-    text: "For sharing, or absolutely not.",
+    text: "Pizzas and quick bites.",
     image:
       "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600&auto=format&fit=crop",
   },
   {
     name: "Crunch Rush",
     query: "Burger",
-    text: "Fast, filling, no ceremony.",
+    text: "Burgers and snacks.",
     image:
       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop",
   },
   {
     name: "Sweet Pause",
     query: "Cake",
-    text: "When dessert is the plan.",
+    text: "Cakes and desserts.",
     image:
       "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop",
   },
 ];
 
 const quickFilters = [
-  { label: "Fastest", value: "delivery", icon: FiClock },
-  { label: "Top Rated", value: "rating", icon: FiStar },
-  { label: "4.0+", value: "rating-4", icon: FiSun },
-  { label: "Pure Veg", value: "veg", icon: FiCoffee },
-  { label: "Offers", value: "offers", icon: FiZap },
+  { label: "Fastest", value: "delivery", icon: ClockIcon },
+  { label: "Top Rated", value: "rating", icon: StarIcon },
+  { label: "4.0+", value: "rating-4", icon: SunIcon },
+  { label: "Pure Veg", value: "veg", icon: CoffeeIcon },
+  { label: "Offers", value: "offers", icon: ZapIcon },
 ];
 
 export default function Body() {
@@ -171,11 +171,11 @@ export default function Body() {
       <section className="cc-shell cc-section">
         <SectionHeader
           eyebrow="Start here"
-          title="What are you in the mood for?"
-          text="Pick one to pre-fill search with a useful craving."
+          title="Browse by craving"
+          text="Choose a category to quickly update your search."
         />
 
-        <div className="cc-mood-shelf">
+        <div className="cc-mood-grid">
           {cravingMoods.map((mood) => (
             <button
               className="cc-mood-card"
@@ -200,8 +200,8 @@ export default function Body() {
           <section className="cc-shell cc-section">
             <SectionHeader
               eyebrow="Chef's radar"
-              title="Restaurants people usually compare first."
-              text="A short list based on rating from the live restaurant feed."
+              title="Popular near you"
+              text="A short list from the live restaurant feed."
             />
             <RestaurantCollection
               compact
@@ -213,7 +213,7 @@ export default function Body() {
           <section className="cc-shell cc-section">
             <SectionHeader
               action={
-                <ActionButton icon={FiRefreshCcw} onClick={refresh}>
+                <ActionButton icon={RefreshIcon} onClick={refresh}>
                   Refresh
                 </ActionButton>
               }
@@ -224,7 +224,7 @@ export default function Body() {
 
             <div className="cc-search-panel">
               <label className="cc-search-field" htmlFor="restaurant-search">
-                <FiSearch aria-hidden="true" />
+                <SearchIcon />
                 <input
                   id="restaurant-search"
                   type="search"
@@ -235,7 +235,7 @@ export default function Body() {
               </label>
 
               <div className="cc-filter-row">
-                <ActionButton icon={FiFilter}>Filters</ActionButton>
+                <ActionButton icon={FilterIcon}>Filters</ActionButton>
                 {quickFilters.map((filter) => (
                   <ActionButton
                     icon={filter.icon}
@@ -247,7 +247,7 @@ export default function Body() {
                   </ActionButton>
                 ))}
                 <ActionButton
-                  icon={FiSliders}
+                  icon={SlidersIcon}
                   isActive={
                     sortBy !== "relevance" || minRating > 0 || onlyOffers || pureVeg
                   }

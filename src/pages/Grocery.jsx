@@ -1,4 +1,4 @@
-import { FiClock, FiShoppingBag, FiTruck } from "react-icons/fi";
+import { ClockIcon, ShoppingBagIcon, TruckIcon } from "../components/ui/icons";
 
 export default function Grocery() {
   return (
@@ -15,17 +15,17 @@ export default function Grocery() {
           {
             title: "Fresh staples",
             text: "Daily essentials, pantry items, and snacks.",
-            icon: FiShoppingBag,
+            icon: ShoppingBagIcon,
           },
           {
             title: "Fast slots",
             text: "A cleaner page is ready for live inventory wiring.",
-            icon: FiClock,
+            icon: ClockIcon,
           },
           {
             title: "Doorstep ready",
             text: "Built to sit beside the restaurant experience.",
-            icon: FiTruck,
+            icon: TruckIcon,
           },
         ].map((card) => {
           const Icon = card.icon;

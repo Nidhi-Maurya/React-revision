@@ -1,21 +1,17 @@
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
-  FiHeart,
-  FiHelpCircle,
-  FiHome,
-  FiMapPin,
-  FiShoppingBag,
-  FiUser,
-  FiZap,
-} from "react-icons/fi";
+  HeartIcon,
+  HelpIcon,
+  HomeIcon,
+  MapPinIcon,
+  ShoppingBagIcon,
+  ZapIcon,
+} from "../ui/icons";
 import { useSelector } from "react-redux";
-import ActionButton from "../ui/ActionButton";
 import useOnlineStatus from "../../hooks/useOnlineStatus";
 import { BRAND_LOGO } from "../../config/swiggy";
 
 export default function Header() {
-  const [buttonUpdate, setButtonUpdate] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const cartItems = useSelector((store) => store.cart.items);
 
@@ -30,7 +26,7 @@ export default function Header() {
         </Link>
 
         <button className="cc-location" type="button">
-          <FiMapPin aria-hidden="true" />
+          <MapPinIcon />
           <span>
             <strong>Gurugram</strong>
             <small>{onlineStatus ? "Live menus nearby" : "Offline"}</small>
@@ -39,40 +35,29 @@ export default function Header() {
 
         <nav className="cc-nav" aria-label="Primary navigation">
           <NavLink className={navClass} to="/">
-            <FiHome aria-hidden="true" />
+            <HomeIcon />
             Home
           </NavLink>
           <NavLink className={navClass} to="/about">
-            <FiHeart aria-hidden="true" />
+            <HeartIcon />
             Story
           </NavLink>
           <NavLink className={navClass} to="/grocery">
-            <FiZap aria-hidden="true" />
+            <ZapIcon />
             Quick
           </NavLink>
           <NavLink className={navClass} to="/contact">
-            <FiHelpCircle aria-hidden="true" />
+            <HelpIcon />
             Help
           </NavLink>
           <NavLink className={({ isActive }) =>
             isActive ? "cc-nav-link cc-cart-nav is-active" : "cc-nav-link cc-cart-nav"
           } to="/cart">
-            <FiShoppingBag aria-hidden="true" />
+            <ShoppingBagIcon />
             Cart - ({cartItems.length} items)
           </NavLink>
         </nav>
 
-        <div className="cc-header-actions">
-          <ActionButton
-            icon={FiUser}
-            onClick={() =>
-              setButtonUpdate((value) => (value === "Login" ? "LogOut" : "Login"))
-            }
-            variant="dark"
-          >
-            {buttonUpdate}
-          </ActionButton>
-        </div>
       </div>
     </header>
   );

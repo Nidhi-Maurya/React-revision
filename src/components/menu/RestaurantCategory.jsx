@@ -1,5 +1,5 @@
-import { TiArrowSortedDown } from "react-icons/ti";
 import RestaurantItemList from "./RestaurantItemList";
+import { ChevronDownIcon } from "../ui/icons";
 
 export default function RestaurantCategory({ data, showItems, setShowIndex }) {
   const itemCount = data?.itemCards?.length || 0;
@@ -10,7 +10,7 @@ export default function RestaurantCategory({ data, showItems, setShowIndex }) {
         <span>
           {data.title} ({itemCount})
         </span>
-        <TiArrowSortedDown aria-hidden="true" />
+        <ChevronDownIcon />
       </button>
 
       {showItems && <RestaurantItemList items={data.itemCards} />}

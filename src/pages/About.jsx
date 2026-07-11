@@ -1,38 +1,38 @@
 import {
-  FiClock,
-  FiHeart,
-  FiMapPin,
-  FiShield,
-  FiShoppingBag,
-  FiSun,
-  FiTruck,
-  FiZap,
-} from "react-icons/fi";
+  ClockIcon,
+  HeartIcon,
+  MapPinIcon,
+  ShieldIcon,
+  ShoppingBagIcon,
+  SunIcon,
+  TruckIcon,
+  ZapIcon,
+} from "../components/ui/icons";
 import SectionHeader from "../components/ui/SectionHeader";
 
 const values = [
   {
     title: "Mood-first discovery",
     text: "The homepage starts from craving moments, not a plain list of shops.",
-    icon: FiHeart,
+    icon: HeartIcon,
   },
   {
     title: "Resilient live data",
     text: "Restaurant and menu data is normalized by shape so API index changes do not break the UI.",
-    icon: FiShield,
+    icon: ShieldIcon,
   },
   {
     title: "Fast ordering loops",
     text: "Search, filters, menus, and cart are designed for repeated use with clear feedback.",
-    icon: FiZap,
+    icon: ZapIcon,
   },
 ];
 
 const journey = [
-  { title: "Pick mood", text: "Start with what you feel like eating.", icon: FiSun },
-  { title: "Compare", text: "Use rating, offers, delivery, and veg filters.", icon: FiClock },
-  { title: "Open menu", text: "Browse live menu sections safely.", icon: FiShoppingBag },
-  { title: "Checkout", text: "Add dishes and manage the cart.", icon: FiTruck },
+  { title: "Pick mood", text: "Start with what you feel like eating.", icon: SunIcon },
+  { title: "Compare", text: "Use rating, offers, delivery, and veg filters.", icon: ClockIcon },
+  { title: "Open menu", text: "Browse live menu sections safely.", icon: ShoppingBagIcon },
+  { title: "Checkout", text: "Add dishes and manage the cart.", icon: TruckIcon },
 ];
 
 export default function About() {
@@ -48,7 +48,7 @@ export default function About() {
           </p>
         </div>
         <div className="cc-about-card">
-          <FiMapPin aria-hidden="true" />
+          <MapPinIcon />
           <strong>Live restaurants in Gurugram</strong>
           <span>Built from real API data with defensive parsing.</span>
         </div>

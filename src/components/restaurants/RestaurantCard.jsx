@@ -1,5 +1,5 @@
-import { FiClock, FiMapPin, FiStar } from "react-icons/fi";
 import { CDN_URL } from "../../config/swiggy";
+import { ClockIcon, MapPinIcon, StarIcon } from "../ui/icons";
 
 export default function RestaurantCard({ resData, compact = false }) {
   const {
@@ -37,20 +37,20 @@ export default function RestaurantCard({ resData, compact = false }) {
         <div className="cc-food-title-row">
           <h3>{name}</h3>
           <span className="cc-rating">
-            <FiStar aria-hidden="true" />
+            <StarIcon />
             {avgRating || "New"}
           </span>
         </div>
 
         <p className="cc-food-meta">
-          <FiClock aria-hidden="true" />
+          <ClockIcon />
           {sla?.slaString || `${sla?.deliveryTime || "--"} mins`}
           {costForTwo && <span>{costForTwo}</span>}
         </p>
 
         <p className="cc-muted cc-one-line">{cuisines.join(", ") || "Fresh meals"}</p>
         <p className="cc-location-line cc-one-line">
-          <FiMapPin aria-hidden="true" />
+          <MapPinIcon />
           {areaName || locality || "Near you"}
         </p>
       </div>
